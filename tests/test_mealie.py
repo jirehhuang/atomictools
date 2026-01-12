@@ -224,13 +224,6 @@ def test_parse_and_add_food_item(
         assert item["note"] == note
 
 
-@pytest.mark.xfail(
-    reason=(
-        "Currently, notes containing the word 'for' often fail to be parsed "
-        "correctly."
-    ),
-    strict=True,
-)
 @pytest.mark.parametrize(
     "item_text, note",
     [
@@ -238,9 +231,9 @@ def test_parse_and_add_food_item(
         ("american cheese, for burgers", "for burgers"),
     ],
 )
-def test_fail_to_parse_note_with_for(mealie, item_text, note):
-    """Test that demonstrates that method .parse_items() fails to parse items
-    with notes containing the word 'for'."""
+def test_can_parse_note_with_for(mealie, item_text, note):
+    """Test that the .parse_items() method successfully parses items with notes
+    containing the usage of the word 'for'."""
     parsed = mealie.parse_items([item_text], as_payload=False)[0]
     assert parsed["note"] == note
 
