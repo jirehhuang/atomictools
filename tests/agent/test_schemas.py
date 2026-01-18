@@ -3,7 +3,7 @@
 import pytest
 from pydantic import ValidationError
 
-from jhutils.agent.tools import (
+from atomictools.agent.tools import (
     MakeChainToolOutputSchema,
     RespondTool,
 )

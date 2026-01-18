@@ -6,8 +6,8 @@ import pytest
 import pytz
 from docstring_parser import parse
 
-from jhutils._utils import _convert_docstring, _match_phrase, _time_id
-from jhutils.agent.tools._tools import AVAILABLE_MODES
+from atomictools._utils import _convert_docstring, _match_phrase, _time_id
+from atomictools.agent.tools._tools import AVAILABLE_MODES
 
 
 def func_numpy(a: int = 1, b: int = 2) -> int:

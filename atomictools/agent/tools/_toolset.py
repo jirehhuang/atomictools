@@ -9,7 +9,7 @@ from atomic_agents.context import (
 )
 from docstring_parser import parse
 
-from jhutils._utils import _match_phrase
+from atomictools._utils import _match_phrase
 
 from ..._mealie import Mealie
 from ..._obsidian import Obsidian

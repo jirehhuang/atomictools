@@ -1,1 +1,1 @@
-"""Tests for the jhutils package."""
+"""Tests for the atomictools package."""

@@ -6,7 +6,7 @@
 import numpy as np
 import pytest
 
-from jhutils import Mealie
+from atomictools import Mealie
 from tests.conftest import TEST_RECIPE_NAME
 
 FOOD_ITEMS: list[tuple] = [

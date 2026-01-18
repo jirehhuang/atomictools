@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from jhutils import Obsidian
+from atomictools import Obsidian
 
 
 def test_error_if_no_owner_or_repository():

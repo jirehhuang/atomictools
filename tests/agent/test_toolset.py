@@ -3,20 +3,20 @@
 import numpy as np
 import pytest
 
-from jhutils._mealie import Mealie
-from jhutils._obsidian import Obsidian
-from jhutils.agent.tools import (
+from atomictools._mealie import Mealie
+from atomictools._obsidian import Obsidian
+from atomictools.agent.tools import (
     AddTasksTool,
     Toolset,
 )
-from jhutils.agent.tools._add_shopping_items import AddShoppingItemsTool
-from jhutils.agent.tools._tools import (
+from atomictools.agent.tools._add_shopping_items import AddShoppingItemsTool
+from atomictools.agent.tools._tools import (
     AVAILABLE_MODES,
     TOOL_NAMES,
     TOOLS,
     _get_default_system_prompt,
 )
-from jhutils.agent.tools._toolset import (
+from atomictools.agent.tools._toolset import (
     AvailableToolsProvider,
     SelectedToolsProvider,
 )
