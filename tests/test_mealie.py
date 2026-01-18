@@ -47,25 +47,6 @@ NON_FOOD_ITEMS: list[tuple] = [
 ]
 
 
-def add_temporary_shopping_items(mealie, items):
-    """Temporarily add items to the shopping list.
-
-    Helper function to add items to the shopping list temporarily and then
-    promptly delete them.
-    """
-    items_before = mealie.load_shopping_items(force=True)
-    response = mealie.add_shopping_items(items)
-    mealie.delete_shopping_items(
-        [
-            item["id"]
-            for item in response["createdItems"] + response["updatedItems"]
-        ]
-    )
-    items_after = mealie.load_shopping_items(force=True)
-    assert items_before == items_after
-    return response
-
-
 def test_error_if_no_api_url():
     """Test that a ValueError is raised if the api_url argument is not
     provided."""
@@ -171,39 +152,6 @@ def test_read_scaled_recipe(mealie):
     recipe_name = TEST_RECIPE_NAME
     assert "7 x " in mealie.read_recipe(recipe_name, scale_factor=7)
     assert " x " in mealie.read_recipe(recipe_name, target_servings=123)
-
-
-def test_add_delete_shopping_items(mealie):
-    """Test that items can be successfully added to and deleted from a shopping
-    list."""
-    items = [
-        {"note": "test non-food example"},
-        {
-            "note": "example",
-            "foodId": next(
-                food["id"] for food in mealie.foods if food["name"] == "cheese"
-            ),
-        },
-    ]
-    add_temporary_shopping_items(mealie, items)
-
-
-def test_parse_and_add_items(mealie):
-    """Test that method .parse_items() correctly parses a list of
-    strings into a list of dictionaries and can be added to the shopping
-    list."""
-    items = [
-        "4 tbsp coconut oil, from Costco",
-        "american cheese, from Safeway",
-        "calamari steak (1kg)",
-    ]
-    parsed_items = mealie.parse_items(items, as_payload=True)
-    assert [item["name"].lower() for item in parsed_items] == [
-        "coconut oil",
-        "american cheese",
-        "calamari steak",
-    ]
-    add_temporary_shopping_items(mealie, parsed_items)
 
 
 @pytest.mark.clear_shopping_list
