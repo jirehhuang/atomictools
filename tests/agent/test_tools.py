@@ -2,7 +2,7 @@
 
 import pytest
 
-from jhutils.agent.tools import (
+from atomictools.agent.tools import (
     AddShoppingItemsTool,
     ReadRecipeTool,
     RespondTool,

@@ -1,7 +1,7 @@
 [project]
-name = "jhutils"
+name = "atomictools"
 version = "0.0.0"
-description = "Python utilities by Jireh, for Jireh"
+description = "ython tools using the Atomic Agents framework"
 authors = [
     {name="Jireh Huang", email="ijirehhuang@gmail.com"},
 ]
@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{ include = "jhutils" }]
+packages = [{ include = "atomictools" }]
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
@@ -87,7 +87,7 @@ tag_format = "v$version"
 update_changelog_on_bump = true
 
 [tool.pytest.ini_options]
-addopts = "-v --cov=jhutils --cov-report=term-missing --cov-report=xml:coverage.xml"
+addopts = "-v --cov=atomictools --cov-report=term-missing --cov-report=xml:coverage.xml"
 testpaths = ["tests"]
 markers = [
     "clear_shopping_list: clear the shopping list before this test"

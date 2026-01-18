@@ -8,9 +8,9 @@ import numpy as np
 import pytest
 from dotenv import load_dotenv
 
-from jhutils import Mealie, Obsidian
-from jhutils.agent import AssistantAgent, AssistantFactory
-from jhutils.agent.tools import Toolset
+from atomictools import Mealie, Obsidian
+from atomictools.agent import AssistantAgent, AssistantFactory
+from atomictools.agent.tools import Toolset
 from tests.conftest import dotenv_file
 
 

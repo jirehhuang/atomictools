@@ -6,10 +6,10 @@ from pathlib import Path
 import pytest
 from dotenv import load_dotenv
 
-from jhutils import Mealie, Obsidian
-from jhutils.agent._assistant import make_openai_client_from_environ
-from jhutils.agent.tools import Toolset
-from jhutils.agent.tools._add_tasks import AddTasksTool
+from atomictools import Mealie, Obsidian
+from atomictools.agent._assistant import make_openai_client_from_environ
+from atomictools.agent.tools import Toolset
+from atomictools.agent.tools._add_tasks import AddTasksTool
 
 env_path = Path(__file__).resolve().parents[1]
 dotenv_file = (
