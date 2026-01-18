@@ -1,7 +1,7 @@
 [project]
 name = "atomictools"
 version = "0.0.0"
-description = "ython tools using the Atomic Agents framework"
+description = "Python tools using the Atomic Agents framework"
 authors = [
     {name="Jireh Huang", email="ijirehhuang@gmail.com"},
 ]
