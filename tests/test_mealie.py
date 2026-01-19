@@ -63,8 +63,10 @@ def test_error_if_no_api_key():
         Mealie(api_url="api_url", api_key="")
 
 
-def test_load_foods(mealie):
-    """Test that method .load_foods() executes successfully."""
+def test_get_and_load_foods(mealie):
+    """Test that the foods getter and the .load_foods() method execute
+    successfully."""
+    assert isinstance(mealie.foods, list)
     foods = mealie.load_foods(initial_per_page=1, force=True)
     assert isinstance(foods, list)
 
