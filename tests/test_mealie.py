@@ -116,6 +116,16 @@ def test_load_recipes(mealie):
     assert len(mealie.recipe_names) == len(mealie.recipes)
 
 
+def test_nonexistent_recipe(mealie):
+    """Test that getting and reading a non-existent recipe returns expected
+    results."""
+    recipe_name = "Non-Existent Recipe"
+    assert mealie.get_recipe(recipe_name) is None
+    assert (
+        mealie.read_recipe(recipe_name) == f"Recipe '{recipe_name}' not found."
+    )
+
+
 def test_get_recipe(mealie):
     """Test that method .get_recipe() executes successfully."""
     recipe_name = TEST_RECIPE_NAME
