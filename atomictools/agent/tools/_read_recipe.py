@@ -51,8 +51,8 @@ class ReadRecipeTool(BaseTool[ReadRecipeInputSchema, ReadRecipeOutputSchema]):
 
     def __init__(
         self,
+        mealie: Mealie,
         config: ReadRecipeConfig | None = None,
-        mealie: Mealie | None = None,
     ):
         if config is None:
             config = ReadRecipeConfig()
@@ -60,7 +60,7 @@ class ReadRecipeTool(BaseTool[ReadRecipeInputSchema, ReadRecipeOutputSchema]):
         self._mealie = mealie
 
     @property
-    def mealie(self) -> Mealie | None:
+    def mealie(self) -> Mealie:
         """Get the Mealie instance."""
         return self._mealie
 
@@ -76,16 +76,9 @@ class ReadRecipeTool(BaseTool[ReadRecipeInputSchema, ReadRecipeOutputSchema]):
         -------
             ReadRecipeOutputSchema: The result of the action.
         """
-        if isinstance(self.mealie, Mealie):
-            recipe_str = self.mealie.read_recipe(
-                recipe_name=params.recipe_name,
-                scale_factor=params.scale_factor,
-                target_servings=params.target_servings,
-            )
-        else:
-            recipe_str = (
-                "Mealie instance not available to "
-                f"read recipe '{params.recipe_name}'."
-            )
-
+        recipe_str = self.mealie.read_recipe(
+            recipe_name=params.recipe_name,
+            scale_factor=params.scale_factor,
+            target_servings=params.target_servings,
+        )
         return ReadRecipeOutputSchema(result=recipe_str)
