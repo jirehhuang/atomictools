@@ -11,9 +11,9 @@ from docstring_parser import parse
 
 from atomictools._utils import _match_phrase
 
-from ..._mealie import Mealie
-from ..._obsidian import Obsidian
-from ._tools import (
+from .._mealie import Mealie
+from .._obsidian import Obsidian
+from .tools._tools import (
     AVAILABLE_MODES,
     TOOLS,
     ToolList,
