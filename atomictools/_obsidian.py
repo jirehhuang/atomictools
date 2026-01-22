@@ -103,6 +103,10 @@ class Obsidian:
         """
         return self._prompts_path
 
+    @prompts_path.setter
+    def prompts_path(self, prompts_path: str | None) -> None:
+        self._prompts_path = prompts_path
+
     @property
     def files(self) -> Dict[str, Any]:
         """Getter for the files."""
@@ -153,8 +157,7 @@ class Obsidian:
         """Delete a file from the repository."""
         if sha is None:
             sha = self._files.get(file_path, {}).get("sha")
-            # pragma: no cover
-            if sha is None:
+            if sha is None:  # pragma: no cover
                 file = self.read_file(file_path) or {}
                 sha = file.get("sha")
         data = {
@@ -170,8 +173,7 @@ class Obsidian:
         """Update an existing file in the repository."""
         if sha is None:
             sha = self._files.get(file_path, {}).get("sha")
-            # pragma: no cover
-            if sha is None:
+            if sha is None:  # pragma: no cover
                 file = self.read_file(file_path) or {}
                 sha = file.get("sha")
         data = {

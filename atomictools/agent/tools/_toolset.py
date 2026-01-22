@@ -241,11 +241,11 @@ class Toolset:
     ) -> BaseTool:
         """Instantiate a tool by its name or schema."""
         tool = self.get_tool(tool_name=tool_name, tool_schema=tool_schema)
-        tool_config = tool.config_cls()
+        tool_config = tool.config_cls()  # type: ignore
         tool_kwargs = self.get_kwargs(
             tool_name=tool_name, tool_schema=tool_schema
         )
-        return tool(config=tool_config, **tool_kwargs)
+        return tool(config=tool_config, **tool_kwargs)  # type: ignore
 
     def get_input_schema(
         self,

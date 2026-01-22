@@ -383,7 +383,9 @@ class Mealie:
 
         return _recipe_as_markdown(recipe)
 
-    def add_shopping_items(self, items: list[dict[str, Any]]):
+    def add_shopping_items(
+        self, items: list[dict[str, Any]]
+    ) -> dict[str, Any]:
         """Add items to the shopping list."""
         for item in items:
             if self.shopping_list_id:
@@ -395,7 +397,7 @@ class Mealie:
             data=items,
         )
 
-    def delete_shopping_items(self, ids: list[str]):
+    def delete_shopping_items(self, ids: list[str]) -> dict[str, Any]:
         """Delete items from the shopping list by ID."""
         return self._request(
             "DELETE",

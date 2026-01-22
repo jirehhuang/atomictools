@@ -32,6 +32,22 @@ def test_dummy_toolset_gets_default_prompts(toolset):
     assert toolset.system_prompt == _get_default_system_prompt("general")
 
 
+def test_prompts_path_setter_and_system_prompt(obsidian):
+    """Test that Obsidian.prompts_path can be set and retrieved, and enables
+    retrieval of the Toolset.system_prompt from the Obsidian prompts path."""
+    toolset = Toolset.from_environ()
+    obsidian = toolset.kwargs["obsidian"]
+
+    assert not obsidian.prompts_path
+    obsidian.prompts_path = "Prompts"
+    assert obsidian.prompts_path == "Prompts"
+
+    toolset._system_prompt = ""  # pylint: disable=protected-access
+    assert (
+        "When necessary to satisfy the request from the user, generate"
+    ) in toolset.system_prompt
+
+
 def test_match_mode(toolset):
     """Test that Toolset.match_mode correctly matches modes from user
     queries."""
