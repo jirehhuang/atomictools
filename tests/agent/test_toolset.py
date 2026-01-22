@@ -5,6 +5,10 @@ import pytest
 
 from atomictools._mealie import Mealie
 from atomictools._obsidian import Obsidian
+from atomictools.agent._toolset import (
+    AvailableToolsProvider,
+    SelectedToolsProvider,
+)
 from atomictools.agent.tools import (
     AddTasksTool,
     Toolset,
@@ -15,10 +19,6 @@ from atomictools.agent.tools._tools import (
     TOOL_NAMES,
     TOOLS,
     _get_default_system_prompt,
-)
-from atomictools.agent.tools._toolset import (
-    AvailableToolsProvider,
-    SelectedToolsProvider,
 )
 
 
@@ -186,9 +186,9 @@ def test_toolset_kwargs_initialize_tools(obsidian, mealie):
     toolset = Toolset(obsidian=obsidian, mealie=mealie)
     assert toolset.kwargs == {"obsidian": obsidian, "mealie": mealie}
     add_tasks_tool = toolset.initialize_tool("AddTasksTool")
-    assert add_tasks_tool.obsidian == obsidian
+    assert add_tasks_tool.obsidian == obsidian  # type: ignore
     add_shopping_items_tool = toolset.initialize_tool("AddShoppingItemsTool")
-    assert add_shopping_items_tool.mealie == mealie
+    assert add_shopping_items_tool.mealie == mealie  # type: ignore
 
 
 def test_toolset_get_function_schema(toolset):

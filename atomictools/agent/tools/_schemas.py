@@ -5,7 +5,7 @@ from typing import Literal, Type, Union, cast
 from atomic_agents import BaseIOSchema, BaseTool
 from pydantic import Field, model_validator
 
-from ._toolset import Toolset
+from .._toolset import Toolset
 
 
 # pylint: disable=invalid-name
@@ -61,7 +61,8 @@ def MakeChainToolOutputSchema(  # noqa: N802
             )
 
         if isinstance(
-            called_tool_input, toolset.get_input_schema("RespondTool")
+            called_tool_input,
+            toolset.get_input_schema("RespondTool"),  # type: ignore
         ) and (remainder != "" or next_tool is not None):
             raise ValueError(
                 "If `called_tool_input` calls `RespondTool`, `REMAINDER` must "
