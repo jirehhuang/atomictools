@@ -60,10 +60,12 @@ def test_read_file(obsidian):
 
 def test_read_nonexistent_file(obsidian):
     """Test that an error is raised if method .read_file() is used on a
-    non-existent file."""
+    non-existent file, or None is returned if none_if_404 is True."""
+    invalid_file_path = "nonexistent-file.md"
     with pytest.raises(Exception) as e:
-        obsidian.read_file("nonexistent-file.md")
+        obsidian.read_file(invalid_file_path)
     assert "404 Client Error" in str(e.value)
+    assert obsidian.read_file(invalid_file_path, none_if_404=True) is None
 
 
 def test_add_existing_file(obsidian):
