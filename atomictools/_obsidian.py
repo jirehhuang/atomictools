@@ -157,8 +157,7 @@ class Obsidian:
         """Delete a file from the repository."""
         if sha is None:
             sha = self._files.get(file_path, {}).get("sha")
-            # pragma: no cover
-            if sha is None:
+            if sha is None:  # pragma: no cover
                 file = self.read_file(file_path) or {}
                 sha = file.get("sha")
         data = {
@@ -174,8 +173,7 @@ class Obsidian:
         """Update an existing file in the repository."""
         if sha is None:
             sha = self._files.get(file_path, {}).get("sha")
-            # pragma: no cover
-            if sha is None:
+            if sha is None:  # pragma: no cover
                 file = self.read_file(file_path) or {}
                 sha = file.get("sha")
         data = {
