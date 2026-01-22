@@ -103,6 +103,10 @@ class Obsidian:
         """
         return self._prompts_path
 
+    @prompts_path.setter
+    def prompts_path(self, prompts_path: str | None) -> None:
+        self._prompts_path = prompts_path
+
     @property
     def files(self) -> Dict[str, Any]:
         """Getter for the files."""
